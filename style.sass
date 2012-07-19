@@ -1,0 +1,83 @@
+@import url(http://fonts.googleapis.com/css?family=Copse|Special+Elite)
+
+li
+  list-style: none
+
+$gold: 1.61803399
+$base: hsl(180,8%,100%)
+
+*
+  margin: 0
+  padding: 0
+
+body, html
+  height: 100%
+
+ul.articles, iframe.viewer
+  box-sizing: border-box
+
+ul.articles
+  width: 100% / (1 + $gold)
+
+iframe.viewer
+  position: fixed
+  width: 100% / $gold
+  height: 100%
+  top: 0
+  right: 0
+
+.article
+  overflow: hidden
+  padding: 1em 0 2em 1.5em
+  position: relative
+
+  border-top: 1px solid darken($base, 0%)
+  background-color: darken($base, 6%)
+  background-image: -webkit-linear-gradient(top,darken($base, 3%), darken($base, 6%))
+  border-bottom: 1px solid darken($base, 15%)
+  text-shadow: 0 1px 0px white
+
+  .title
+    //display: -webkit-box
+    //-webkit-box-orient: horizontal
+    //-webkit-box-pack: center
+    //-webkit-box-align: end
+
+    border-bottom: 1px dotted darken($base, 25%)
+    padding-right: 1.5em
+
+  h1
+    //-webkit-box-flex: 2
+    font-size: 1.5em
+    font-family: 'Copse', serif
+
+  .domain
+    //-webkit-box-flex: 1
+    float: right
+
+  .score
+    color: #fe5600
+    font-family: 'Special Elite', serif
+    font-size: 5em
+    position: absolute
+    right: 0
+    bottom: -0.3em
+
+  &.selected
+    border-top: 1px solid darken($base, 5%)
+    background-color: darken($base, 11%)
+    background-image: -webkit-linear-gradient(top,darken($base, 10%), darken($base, 15%))
+    border-bottom: 1px solid darken($base, 20%)
+
+    .title
+      border-bottom: 1px solid darken($base, 40%)
+      position: relative
+      &::after
+        content: ''
+        position: absolute
+        height: 1px
+        width: 0
+        bottom: -5px
+        right: -3px
+        border: 4px solid transparent
+        border-left-color: darken($base, 40%)

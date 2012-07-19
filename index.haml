@@ -1,0 +1,18 @@
+!!! 5
+%html(ng-app="hnlulz")
+  %head
+    %script(src='http://code.angularjs.org/angular-1.0.0rc10.min.js')
+    %script(src='/app.js')
+    %link(rel="stylesheet" type="text/css" href="/style.css")
+  %body(ng-controller="Main")
+    %ul.articles
+      %li.article(ng-hide="articles")
+        %h1 Loading...
+      %li.article(ng-repeat="article in articles" ng-click="show(article)" ng-class="articleClass(article)")
+        .title
+          %h1 {{article.title}}
+        %span.score {{article.score}}
+        %span.domain {{article.domain}}
+        %span.user {{article.user}}
+        %span.comments {{article.comments}}
+    %iframe.viewer(ng-src="{{selectedUrl}}")
