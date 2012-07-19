@@ -11,9 +11,9 @@
       %li.article(ng-repeat="article in articles" ng-click="show(article)" ng-class="articleClass(article)")
         .title
           %h1 {{article.title}}
-        %span.user> {{article.user}}
         %span.score> {{article.score}}
         %span.comments> {{article.comments}}
         %span.age> {{article.age}}
+        %span.user> {{article.user}}
         %span.domain> {{article.domain}}
     %iframe.viewer(ng-src="{{selectedUrl}}")

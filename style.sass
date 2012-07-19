@@ -28,7 +28,7 @@ iframe.viewer
 
 .article
   overflow: hidden
-  padding: 1em 0 2em 1.5em
+  padding: 1em 0 1em 1.5em
   position: relative
 
   border-top: 1px solid darken($base, 0%)
@@ -40,27 +40,35 @@ iframe.viewer
   .title
     border-bottom: 1px dotted darken($base, 25%)
     padding-right: 1.5em
+    margin-bottom: 1em
 
   h1
     font-size: 1.5em
     font-family: 'Copse', serif
 
   .user, .score, .comments, .age, .domain
-    display: inline-block
-    vertical-align: baseline
     font-family: Helvetica
-    text-align: center
     margin: 0.2em
 
+  .user
+    font-weight: bold
+    &::before
+      content: 'by '
+      font-weight: normal
+
   .score, .comments
-    font-size: 2em
+    font-weight: bold
     &::after
-      display: block
-      font-size: 0.5em
+      font-weight: normal
   .score::after
-    content: 'points'
+    content: ' points'
   .comments::after
-    content: 'comments'
+    content: ' comments'
+
+  .domain
+    display: inline-block
+    &::before
+      content: ' - '
 
   &.selected
     border-top: 1px solid darken($base, 5%)
