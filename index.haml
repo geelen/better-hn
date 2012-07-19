@@ -9,11 +9,12 @@
       %li.article(ng-hide="articles")
         %h1 Loading...
       %li.article(ng-repeat="article in articles" ng-click="show(article)" ng-class="articleClass(article)")
-        .title
-          %h1 {{article.title}}
-        %span.score> {{article.score}}
-        %span.comments> {{article.comments}}
-        %span.age> {{article.age}}
-        %span.user> {{article.user}}
-        %span.domain> {{article.domain}}
+        %span.pre
+          %span.score {{article.score}}
+          %span.domain {{article.domain}}
+        %h1.title {{article.title}}
+        %span.post
+          %span.age posted {{article.age}}
+          %span.user {{article.user}}
+          %span.comments {{article.comments}}
     %iframe.viewer(ng-src="{{selectedUrl}}")
