@@ -8,8 +8,8 @@
     %ul.articles
       %li.article(ng-hide="articles")
         %h1.title Loading...
-      %li.article(ng-repeat="article in articles" ng-click="show(article)" ng-class="articleClass(article)")
-        %a(ng-href='{{article.link}}' ng-click="$event.preventDefault()")
+      %li.article(ng-repeat="article in articles" ng-class="articleClass(article)")
+        %a(ng-href='{{article.link}}' ng-click="show(article, $event)")
           %span.pre
             %span.score {{article.score}}
             %span.domain {{article.domain}}
@@ -17,5 +17,5 @@
           %span.post
             %span.age posted {{article.age}}
             %span.user {{article.user}}
-            %span.comments {{article.comments}}
+            %span.comments(ng-click='showComments(article, $event)') {{article.comments}}
     %iframe.viewer(ng-src="{{selectedUrl}}")
