@@ -1,5 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Copse|Special+Elite)
 
+@font-face
+  font-family: 'EntypoRegular'
+  src: url('entypo-webfont.eot')
+  src: url('entypo-webfont.eot?#iefix') format("embedded-opentype"), url(' entypo-webfont.woff') format("woff"), url(' entypo-webfont.ttf') format("truetype"), url(' entypo-webfont.svg#EntypoRegular') format("svg")
+  font-weight: normal
+  font-style: normal
+
 li
   list-style: none
 
@@ -71,6 +78,14 @@ li.article
 
   span.domain
     color: #777
+    margin-left: 15px
+    position: relative
+    &::after
+      content: "è"
+      font: normal 2em "EntypoRegular"
+      position: absolute
+      top: -9px
+      left: -20px
 
   span.comments
     float: right
@@ -85,8 +100,15 @@ li.article
     font-weight: bold
     &::after
       font-weight: normal
-  .comments::after
-    content: ' comments'
+  .comments
+    margin-left: 24px
+    position: relative
+    &::before
+      content: '9'
+      font: normal 2.1em 'EntypoRegular'
+      position: absolute
+      top: -8px
+      left: -22px
 
   &.selected
     background-color: darken($base, 15%)
