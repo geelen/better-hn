@@ -5,16 +5,17 @@ set :views, 'source'
 get '/hn.json' do
   body = Nokogiri::HTML(Curl::Easy.perform("http://news.ycombinator.com").body_str)
   table = body.css("body >center >table >tr:nth-child(3) >td >table")
-  table.css(">tr").each_slice(3).select { |x| x.length == 3 }.map { |title, score, _| {
-    title: title.css("td.title a").text,
-    link: title.css("td.title a").attr('href').value,
-    domain: title.css(".comhead").text.gsub(/[\(\) ]/,''),
-    score: score.css(".subtext >span").text.to_i,
-    user: score.css("a:first-of-type").text,
-    age: score.css('td:nth-child(2)').first.children[3].text.gsub(/\|/,'').strip,
-    comments: score.css("a:last-of-type").text.to_i,
-    comments_link: score.css("a:last-of-type").attr('href').value
-  }}.to_json
+  table.css(">tr").each_slice(3).select { |x| x.length == 3 && !x.first.css('td:nth-child(2)').inner_html.empty? }.
+    map { |title, score, _| {
+      title: title.css("td.title a").text,
+      link: title.css("td.title a").attr('href').value,
+      domain: title.css(".comhead").text.gsub(/[\(\) ]/,''),
+      score: score.css(".subtext >span").text.to_i,
+      user: score.css("a:first-of-type").text,
+      age: score.css('td:nth-child(2)').first.children[3].text.gsub(/\|/,'').strip,
+      comments: score.css("a:last-of-type").text.to_i,
+      comments_link: score.css("a:last-of-type").attr('href').value
+    }}.to_json
 end
 
 get '/' do
